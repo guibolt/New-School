@@ -38,7 +38,7 @@
 <script>
 import {createNamespacedHelpers} from 'vuex'
 
-const { mapState } = createNamespacedHelpers('login')
+const { mapState } = createNamespacedHelpers('moduloPessoas')
 export default {
   data: () => ({
     turma: {

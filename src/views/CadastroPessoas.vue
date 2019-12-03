@@ -37,7 +37,7 @@
                     v-model.trim="$v.pessoa.nome.$model"
                   ></v-text-field>
                   <v-text-field
-                    v-if="pessoa.tipo == 'Professor'"
+                    v-if="pessoa.tipo == 'Professores'"
                     prepend-icon="N"
                     name="cpf"
                     label="Cpf"
@@ -48,6 +48,7 @@
                     v-mask="mask"
                   ></v-text-field>
                   <v-toolbar-title>Escolha o Sexo</v-toolbar-title>
+                  
                   <v-radio-group
                     :error-messages="mustSelectSex"
                     :success="!$v.pessoa.sexo.$invalid"
@@ -57,6 +58,15 @@
                     <v-radio label="Feminino" value="feminino"></v-radio>
                     <v-radio label="Masculino" value="masculino"></v-radio>
                   </v-radio-group>
+                  <v-flex v-if="pessoa.tipo === 'Alunos'">
+            <v-toolbar-title>Escolha se o Aluno é bolsista</v-toolbar-title>
+                  <v-checkbox
+                  
+                  v-model="pessoa.bolsista"
+                  label="É Bolsista`"
+                ></v-checkbox>
+                  </v-flex>
+                   
                 </v-form>
               </v-card-text>
               <v-card-actions>
@@ -76,19 +86,23 @@
 import { mask } from "vue-the-mask";
 import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
 import { match } from "minimatch";
+import {createNamespacedHelpers} from 'vuex'
+
+const { mapActions } = createNamespacedHelpers('moduloPessoas')
 export default {
   directives: {
     mask
   },
   data: () => ({
     mask: "###.###.###-##",
-    items: ["Professor", "Aluno"],
+    items: ["Professores", "Alunos"],
     pessoa: {
       nome: "",
       sexo: "",
-      datanascimento: "",
+      dataDeNascimento: "",
       cpf: "",
-      tipo: undefined
+      tipo: undefined,
+      bolsista: false
     }
   }),
   validations() {
@@ -111,7 +125,7 @@ export default {
       }
     };
 
-    if (this.pessoa.tipo === "Aluno") return validations;
+    if (this.pessoa.tipo === "Alunos") return validations;
 
     return {
       pessoa: {
@@ -179,8 +193,18 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['cadastrarPessoa']),
     submit() {
-      this.$validator.validateAll();
+     
+        const pessoa = {
+        nome: this.pessoa.nome,
+        sexo:this.pessoa.sexo,
+        dataDeNascimento: this.pessoa.dataDeNascimento,
+        cpf: this.pessoa.cpf
+        }
+
+
+      this.cadastrarPessoa(this.pessoa.tipo,pessoa).then(this.$router.push('/home'))
     }
   }
 };
