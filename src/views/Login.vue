@@ -63,16 +63,14 @@
     </v-content>
   </v-app>
 </template>
-<script>
 
+<script>
 import {createNamespacedHelpers} from 'vuex'
 import { required, email, minLength } from 'vuelidate/lib/validators'
 
-const {mapActions} = createNamespacedHelpers('login')
+const { mapActions } = createNamespacedHelpers('login')
+
 export default {
-  created(){
-   // console.log('tokendloal', this.$v)
-  },
   name: 'Login',
   data: () => ({
     user: {
@@ -115,11 +113,12 @@ export default {
      ...mapActions(['logar']),
 		 	submit () {
 					 const user = {
-							 email: this.user.$v.email,
-							 senha: this.user.$v.password
+							 email: this.user.email,
+							 senha: this.user.password
 					 }
          	this.logar(user).then(this.$router.push('/home'))	.catch(err => { console.log(err)})
          }
-    }
+		}
 }
+
 </script>

@@ -16,6 +16,24 @@ const routes = [
     name: "cadastro",
     component: () => import(/* webpackChunkName: "cadastro"*/ '../views/Cadastro.vue')
   },
+  {
+    name: "DashBoard",
+    path: "/home",
+    meta: { requiresAuth: true },
+    component: () => import(/* webpackChunkName: "DashBoard"*/ "../views/DashBoard.vue")
+  },
+  {
+    name: "CadastroPessoas",
+    path: "/cadastropessoas",
+    meta: { requiresAuth: true },
+    component: () => import(/* webpackChunkName: "CadastroPessoas"*/"../views/CadastroPessoas.vue")
+  },
+  {
+    name: "CadastroTurmas",
+    path: "/cadastroturmas",
+    meta: { requiresAuth: true },
+    component: () => import(/* webpackChunkName: "CadastroPessoas"*/"../views/CadastroTurmas.vue")
+  }
 ]
 
 const router = new VueRouter({

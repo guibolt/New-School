@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import Jwtdecoder from "jwt-decode";
 import axios from 'axios'
+
 Vue.use(Vuex);
 
 const baseURL = process.env.VUE_APP_URL;
@@ -11,7 +12,6 @@ const apiClient = axios.create({
   headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json'
-      
   }
 })
 
@@ -20,13 +20,13 @@ export const login = {
   state: {
     status: "",
     token: localStorage.getItem("token") || "",
-    user: {}
+    user: {},
   },
   mutations: {
     carregandoAutenticacao(state) {
       state.status = "loading";
     },
-    sucessoAutenticacao(state, token, user) {
+    sucessoAutenticacao(state,user,token) {
       state.status = "success";
       state.token = token;
       state.user = user;
@@ -53,12 +53,10 @@ export const login = {
             const user = Object.assign({}, Jwtdecoder(token).unique_name);
 
             localStorage.setItem("token", token);
-            //apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-            commit("sucessoAutenticacao", token, user);
+            commit("sucessoAutenticacao",user, token, );
             console.log("usuario", user);
       }).catch(err => console.log("Erro no login", err))
 
-      
     },
     registrar({ commit }, user) {
       commit("carregandoAutenticacao")
@@ -74,13 +72,11 @@ export const login = {
     logout({ commit }) {
       commit("fazerLogout");
       localStorage.removeItem('token');
-     // delete axios.defaults.headers.common["Authorization"];
     }
   },
 
   getters: {
     isLoggedIn: state => !!state.token,
-    authStatus: state => state.status,
-    loggadUser: state => state.user
+    authStatus: state => state.status
   }
 };
