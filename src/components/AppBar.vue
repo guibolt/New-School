@@ -25,7 +25,8 @@
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title>{{user[1]}}</v-list-item-title>
+            
+            <v-list-item-title>{{userName}}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -55,16 +56,35 @@
 </template>
 <script>
 import {createNamespacedHelpers} from 'vuex'
+import Jwtdecoder from 'jwt-decode'
 
 const { mapActions , mapState } = createNamespacedHelpers('login')
 
 export default {
-  
+  created(){
+    setTimeout(()=>{
+       this.userName = Object.assign({}, Jwtdecoder(localStorage.getItem('token')).unique_name)[1]
+    },1000)
+  },
   data: () => ({
     userName: undefined,
     drawer: false,
     items: [
-      { title: "Home", icon: "dashboard", url: "/home" },
+      { 
+        title: "Home", 
+        icon: "dashboard",
+         url: "/home"
+     },
+        {
+        title: "Alunos e Professores",
+         icon: "people",
+         url: "/pessoas"
+     },
+     {
+         title: "Visualizar Turmas",
+         icon: "menu_book",
+         url: "/turmas"
+      },
       {
         title: "Cadastrar Pessoas",
         icon: "fiber_new",
@@ -76,32 +96,25 @@ export default {
         url: "/cadastroTurmas"
       },
       {
-        title: "Turmas",
-        icon: "menu_book",
-        url: "/Turmas"
-      },
-      { title: "Listar Profesor por Id", icon: "list", url: "" },
-      { title: "Listar Classes por Id", icon: "list", url: "" }
+      title: "Sobre Nós",
+      icon: "info",
+       url: "/sobre" 
+       }
     ]
   }),
-  computed: {
-    ...mapState(['user'])
-  },
     methods: {
     ...mapActions({
       fazerLogout: 'logout'
     }),
     ValidaERedireciona(item) {
-      if (item.url === "/home"){
-        this.$router.push(item.url)
+      if (item.url === this.$route.path)
         this.drawer = !this.drawer;
-      }
-      
-      else this.$router.push(item.url);
+
+      else
+       this.$router.push(item.url);
     },
     logout() {
-       this.fazerLogout()
-       this.$router.push('/login')
+       this.fazerLogout().then(this.$router.push('/login'))
     }
   }
 };

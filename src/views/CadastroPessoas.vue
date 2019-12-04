@@ -16,7 +16,7 @@
                   </v-container>
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-row justify="center">
-                      <v-date-picker v-model="pessoa.datanascimento"></v-date-picker>
+                      <v-date-picker v-model="pessoa.dataDeNascimento"></v-date-picker>
                     </v-row>
                   </v-col>
                   <v-select
@@ -116,7 +116,7 @@ export default {
         sexo: {
           required
         },
-        datanascimento: {
+        dataDeNascimento: {
           required
         },
         tipo: {
@@ -164,7 +164,7 @@ export default {
     mustSelectDate() {
       const errors = [];
 
-      const date = this.$v.pessoa.datanascimento;
+      const date = this.$v.pessoa.dataDeNascimento;
       if (!date.$dirty) return errors;
 
       !date.required && errors.push("Data é obgradoria");
@@ -194,17 +194,21 @@ export default {
   },
   methods: {
     ...mapActions(['cadastrarPessoa']),
-    submit() {
+   async submit() {
      
-        const pessoa = {
+  
+      const aPessoa = {
         nome: this.pessoa.nome,
-        sexo:this.pessoa.sexo,
+        sexo: this.pessoa.sexo,
         dataDeNascimento: this.pessoa.dataDeNascimento,
-        cpf: this.pessoa.cpf
-        }
+        cpf: this.pessoa.cpf.match(/\d+/g).map(Number).toString().split(',').join(''),
+        tipo: this.pessoa.tipo
+      }
+      console.log("This pessoa", this.pessoa)
+      console.log("tipo pessoa", this.pessoa.tipo)
+      console.log("const pessoa", aPessoa)
 
-
-      this.cadastrarPessoa(this.pessoa.tipo,pessoa).then(this.$router.push('/home'))
+       await this.cadastrarPessoa(aPessoa).then(this.$router.push('/home'))
     }
   }
 };

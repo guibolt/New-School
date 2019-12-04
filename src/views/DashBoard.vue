@@ -1,5 +1,8 @@
  <template>
+  <v-app >
     <AppBar />
+    <h1 class="text-center">Sistema Escolar</h1>
+      </v-app >
 </template>
 
 <script>
@@ -10,3 +13,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+h2{
+size: 30px;
+}
+</style>

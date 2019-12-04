@@ -6,21 +6,21 @@
           <v-col cols="14" sm="8" md="4">
             <v-card class="elevation-12">
               <v-toolbar color="primary" dark flat>
-                <v-toolbar-title>Cadastro de Turma</v-toolbar-title>
+                <v-toolbar-title>Cadastrar Turmas</v-toolbar-title>
                 <v-spacer />
               </v-toolbar>
               <v-card-text>
                 <form>
                   <v-text-field
                     prepend-icon="home"
-                    v-model="turma.nomeTurma"
+                    v-model="nomeTurma"
                     label="Nome da Turma"
                   ></v-text-field>
                 </form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer />
-                <v-btn color="secondary" @click="$router.push('/turmas')"
+                <v-btn color="secondary" @click="submit"
                   >Cadastrar</v-btn
                 >
                 <v-btn color="secondary" @click="$router.push('/home')"
@@ -38,19 +38,21 @@
 <script>
 import {createNamespacedHelpers} from 'vuex'
 
-const { mapState } = createNamespacedHelpers('moduloPessoas')
+import Jwtdecoder from 'jwt-decode'
+
+const { mapState, mapActions } = createNamespacedHelpers('moduloPessoas')
 export default {
   data: () => ({
-    turma: {
       nomeTurma: "",
-      coodernadorId: ""
-    }
   }),
   methods: {
-    submit() {}
-  },
-  computed:{
-  ...mapState(['user'])
+    ...mapActions(['cadastrarTurma']),
+    submit() {
+        this.cadastrarTurma({
+          nomeTurma: this.nomeTurma,
+          coordenadorId: Object.assign({}, Jwtdecoder(localStorage.getItem('token')).unique_name)[2]
+        }).then(this.$router.push('/home'))
+    }
   }
 };
 </script>

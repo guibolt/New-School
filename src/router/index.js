@@ -10,8 +10,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
   },
   {
-    path: '*', redirect: '/'
-  },{
     path: "/cadastro",
     name: "cadastro",
     component: () => import(/* webpackChunkName: "cadastro"*/ '../views/Cadastro.vue')
@@ -32,8 +30,27 @@ const routes = [
     name: "CadastroTurmas",
     path: "/cadastroturmas",
     meta: { requiresAuth: true },
-    component: () => import(/* webpackChunkName: "CadastroPessoas"*/"../views/CadastroTurmas.vue")
-  }
+    component: () => import(/* webpackChunkName: "CadastroTurmas"*/"../views/CadastroTurmas.vue")
+  },
+  {
+    name: "Turmas",
+    path: "/turmas",
+    meta: { requiresAuth: true },
+    component: () => import(/* webpackChunkName: "Turmas"*/"../views/Turmas.vue")
+  },
+  {
+    name: "Pessoas",
+    path: "/pessoas",
+    meta: { requiresAuth: true },
+    component: () => import(/* webpackChunkName: "Pessoas"*/"../views/AlunosEProfessores.vue")
+  },
+  {
+    name: "Sobre",
+    path: "/sobre",
+    meta: { requiresAuth: true },
+    component: () => import(/* webpackChunkName: "Sobre"*/"../views/SobreNos.vue")
+  },
+  { path: '*', redirect: '/'}
 ]
 
 const router = new VueRouter({

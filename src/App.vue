@@ -7,7 +7,13 @@
 </template>
 
 <script>
+
 export default {
   name: 'App'
+  ,
+  created(){
+    if(localStorage.getItem('token'))
+    this.$router.push('/home')
+  }
 }
 </script>
