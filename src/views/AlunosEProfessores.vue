@@ -240,15 +240,16 @@ export default {
       this.showEdit = !this.showEdit;
       vm.pessoaSelecionada = Object.assign({}, pessoa);
     },
-     async salvarEdicao(pessoaSelecionada) {
+      salvarEdicao(pessoaSelecionada) {
        pessoaSelecionada.tipo = pessoaSelecionada.tipo = this.descobrirTipo(pessoaSelecionada)
-     await this.mudarPessoa(pessoaSelecionada)
-      await this.buscarNovamente(this.tipo)
+      this.mudarPessoa(pessoaSelecionada)
+       this.buscarNovamente(this.tipo)
       this.showEdit = !this.showEdit;
     },
-     removerPessoa(pessoaSelecionada) {
+      removerPessoa(pessoaSelecionada) {
       pessoaSelecionada.tipo = this.descobrirTipo(pessoaSelecionada)
-      this.deletarPessoa(pessoaSelecionada)
+       this.deletarPessoa(pessoaSelecionada)
+       this.buscarPessoas(this.tipo)
       this.dialog = !this.dialog;
     },
     selecionarPessoa(pessoa) {

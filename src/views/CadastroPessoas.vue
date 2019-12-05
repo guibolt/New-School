@@ -194,21 +194,13 @@ export default {
   },
   methods: {
     ...mapActions(['cadastrarPessoa']),
-   async submit() {
-     
-  
-      const aPessoa = {
-        nome: this.pessoa.nome,
-        sexo: this.pessoa.sexo,
-        dataDeNascimento: this.pessoa.dataDeNascimento,
-        cpf: this.pessoa.cpf.match(/\d+/g).map(Number).toString().split(',').join(''),
-        tipo: this.pessoa.tipo
-      }
-      console.log("This pessoa", this.pessoa)
-      console.log("tipo pessoa", this.pessoa.tipo)
-      console.log("const pessoa", aPessoa)
+    submit() {
+     console.log("This pessoa antes ", this.pessoa)
+       this.pessoa.cpf ? this.pessoa.cpf = this.pessoa.cpf.match(/\d+/g).map(Number).toString().split(',').join('') : this.pessoa.cpf = undefined
+       
+      console.log("This pessoa antes ", this.pessoa)
 
-       await this.cadastrarPessoa(aPessoa).then(this.$router.push('/home'))
+        this.cadastrarPessoa(this.pessoa).then(this.$router.push('/home'))
     }
   }
 };

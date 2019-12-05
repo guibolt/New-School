@@ -21,6 +21,7 @@ export const login = {
     status: "",
     token: localStorage.getItem("token") || "",
     user: {},
+    loginSuccessful: false
   },
   mutations: {
     carregandoAutenticacao(state) {
@@ -40,7 +41,12 @@ export const login = {
     fazerLogout(state) {
       state.status = "";
       state.token = "";
-    }
+    },
+    loginSucesso: (state, resultado) => {      
+      if (resultado != null) {                
+          state.loginSucessful = true;
+      }
+  }
   },
 
   actions: {

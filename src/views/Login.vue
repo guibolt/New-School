@@ -112,11 +112,10 @@ export default {
    methods: {
      ...mapActions(['logar']),
 		 	submit () {
-					 const user = {
+         	 this.logar({
 							 email: this.user.email,
 							 senha: this.user.password
-					 }
-         	this.logar(user).then(this.$router.push('/home'))	.catch(err => { console.log(err)})
+					 }).then(this.$router.push('/home'))	.catch(err => { console.log(err)})
          }
 		}
 }

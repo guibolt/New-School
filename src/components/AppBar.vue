@@ -64,7 +64,7 @@ export default {
   created(){
     setTimeout(()=>{
        this.userName = Object.assign({}, Jwtdecoder(localStorage.getItem('token')).unique_name)[1]
-    },1000)
+    },3000)
   },
   data: () => ({
     userName: undefined,
