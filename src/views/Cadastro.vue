@@ -167,7 +167,9 @@ export default {
           confirmaSenha: this.user.repeatPassword
         }
         this.registrar(user)
-       .then(() => this.$router.push('/'))
+       .then(()=>{
+         this.$router.push('/')
+       })
        .catch(err => console.log("erro no registro", err))
     }
   }

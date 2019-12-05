@@ -78,10 +78,10 @@ router.beforeEach((to, from, next) => {
   //Verifica se o usuario esta logado ou nao
   if (!store.state.login.loginSuccessful)
     if (authRequired && !store.state.login.loginSuccessful)
-      return next('/');
+      return next({ path: '/' });
 
   next()
-    return
+  
 })
 
 
