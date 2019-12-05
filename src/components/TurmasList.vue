@@ -17,26 +17,20 @@
                 no-action
               >
                 <template v-slot:activator>
-                  <v-list-item-content
-                  @click="buscarTurmaID(turma)"
-                  >
+                  <v-list-item-content @click="buscarTurmaID(turma)">
                     <v-list-item-title v-text="turma.nomeTurma"></v-list-item-title>
                   </v-list-item-content>
                 </template>
                 <v-divider></v-divider>
-                <v-list-group no-action sub-group
-                >
-                  
+                <v-list-group no-action sub-group>
                   <template v-slot:activator>
-                    <v-list-item-content
-                     >
-                        
+                    <v-list-item-content>
                       <v-list-item-title @mouseover="show = true" @mouseout="show = false">
                         <v-badge right color="green" v-model="show">
                           <template v-slot:badge>
-      
-      
-                            <span v-if="ATurmaSelecionada.professores">{{ ATurmaSelecionada.professores.length }}</span>
+                            <span
+                              v-if="ATurmaSelecionada.professores"
+                            >{{ ATurmaSelecionada.professores.length }}</span>
                             <span v-else>Não há professores</span>
                           </template>
                           <span class="ml-5">
@@ -47,10 +41,10 @@
                     </v-list-item-content>
                   </template>
 
-                   
-
-                  <v-list-item 
-                  v-for="professor in ATurmaSelecionada.professores" :key="professor.id">
+                  <v-list-item
+                    v-for="professor in ATurmaSelecionada.professores"
+                    :key="professor.id"
+                  >
                     <v-icon color="red" title="Professor" justify="left">
                       {{
                       professor.icon
@@ -69,21 +63,20 @@
 
                 <v-list-group sub-group no-action>
                   <template v-slot:activator>
-                    <v-list-item-content
-                     v-if="ATurmaSelecionada.professores"
-                    >
+                    <v-list-item-content v-if="ATurmaSelecionada.professores">
                       <v-list-item-title @mouseover="showA = true" @mouseout="showA = false">
                         <v-badge right color="green" v-model="showA">
                           <template v-slot:badge>
-                            <span v-if="ATurmaSelecionada.alunos">{{ ATurmaSelecionada.alunos.length }}</span>
-                               <span v-else>Não há professores</span>
+                            <span
+                              v-if="ATurmaSelecionada.alunos"
+                            >{{ ATurmaSelecionada.alunos.length }}</span>
+                            <span v-else>Não há professores</span>
                           </template>
                           <span class="ml-5">
                             <strong>Alunos</strong>
                           </span>
                         </v-badge>
                       </v-list-item-title>
-
                     </v-list-item-content>
                   </template>
                   <v-list-item v-for="aluno in ATurmaSelecionada.alunos" :key="aluno.id">
@@ -154,11 +147,10 @@
   </v-app>
 </template>
 <script>
-import {createNamespacedHelpers} from 'vuex'
+import { createNamespacedHelpers } from "vuex";
 
-const { mapState, mapActions } = createNamespacedHelpers('moduloPessoas')
+const { mapState, mapActions } = createNamespacedHelpers("moduloPessoas");
 export default {
-  
   data() {
     return {
       pessoaSelecionada: {},
@@ -171,11 +163,11 @@ export default {
       alertSucess: true
     };
   },
-  computed:{
-    ...mapState(['lstTurmas','ATurmaSelecionada'])
+  computed: {
+    ...mapState(["lstTurmas", "ATurmaSelecionada"])
   },
   methods: {
-    ...mapActions(['buscarTurmas','buscarTurmaID']),
+    ...mapActions(["buscarTurmas", "buscarTurmaID"]),
     exibirInformacoes(turma) {},
     selectPerson(pessoa) {
       this.showInfo = !this.showInfo;
@@ -186,10 +178,10 @@ export default {
       return pessoaSelecionada.cpf ? "Professor" : "Aluno";
     }
   },
-  created(){
-    this.buscarTurmas()
-    console.log("Turmas?: ", this.lstTurmas[0])
+  created() {
+    this.buscarTurmas();
+    console.log("Turmas?: ", this.lstTurmas[0]);
   }
-}
+};
 </script>
 >

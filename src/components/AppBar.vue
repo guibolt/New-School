@@ -3,17 +3,13 @@
     <v-app-bar color="primary" dense dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Escola</v-toolbar-title>
-
       <v-spacer></v-spacer>
-    
+
       <v-toolbar-items>
-        <v-btn
-        icon
-        @click="logout"
-        >Sair 
-        <v-icon>exit_to_app</v-icon>
+        <v-btn icon @click="logout">
+          Sair
+          <v-icon>exit_to_app</v-icon>
         </v-btn>
-  
       </v-toolbar-items>
     </v-app-bar>
 
@@ -25,7 +21,6 @@
           </v-list-item-avatar>
 
           <v-list-item-content>
-            
             <v-list-item-title>{{userName}}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -55,35 +50,38 @@
   </div>
 </template>
 <script>
-import {createNamespacedHelpers} from 'vuex'
-import Jwtdecoder from 'jwt-decode'
+import { createNamespacedHelpers } from "vuex";
+import Jwtdecoder from "jwt-decode";
 
-const { mapActions , mapState } = createNamespacedHelpers('login')
+const { mapActions, mapState } = createNamespacedHelpers("login");
 
 export default {
-  created(){
-    setTimeout(()=>{
-       this.userName = Object.assign({}, Jwtdecoder(localStorage.getItem('token')).unique_name)[1]
-    },3000)
+  created() {
+    setTimeout(() => {
+      this.userName = Object.assign(
+        {},
+        Jwtdecoder(localStorage.getItem("token")).unique_name
+      )[1];
+    }, 3000);
   },
   data: () => ({
     userName: undefined,
     drawer: false,
     items: [
-      { 
-        title: "Home", 
+      {
+        title: "Home",
         icon: "dashboard",
-         url: "/home"
-     },
-        {
+        url: "/home"
+      },
+      {
         title: "Alunos e Professores",
-         icon: "people",
-         url: "/pessoas"
-     },
-     {
-         title: "Visualizar Turmas",
-         icon: "menu_book",
-         url: "/turmas"
+        icon: "people",
+        url: "/pessoas"
+      },
+      {
+        title: "Visualizar Turmas",
+        icon: "menu_book",
+        url: "/turmas"
       },
       {
         title: "Cadastrar Pessoas",
@@ -96,25 +94,22 @@ export default {
         url: "/cadastroTurmas"
       },
       {
-      title: "Sobre Nós",
-      icon: "info",
-       url: "/sobre" 
-       }
+        title: "Sobre Nós",
+        icon: "info",
+        url: "/sobre"
+      }
     ]
   }),
-    methods: {
+  methods: {
     ...mapActions({
-      fazerLogout: 'logout'
+      fazerLogout: "logout"
     }),
     ValidaERedireciona(item) {
-      if (item.url === this.$route.path)
-        this.drawer = !this.drawer;
-
-      else
-       this.$router.push(item.url);
+      if (item.url === this.$route.path) this.drawer = !this.drawer;
+      else this.$router.push(item.url);
     },
     logout() {
-       this.fazerLogout().then(this.$router.push('/login'))
+      this.fazerLogout().then(this.$router.push("/login"));
     }
   }
 };
