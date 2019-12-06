@@ -68,7 +68,7 @@
 import {createNamespacedHelpers} from 'vuex'
 import { required, email, minLength } from 'vuelidate/lib/validators'
 
-const { mapActions } = createNamespacedHelpers('login')
+const { mapActions, mapState } = createNamespacedHelpers('login')
 
 export default {
   name: 'Login',
@@ -91,6 +91,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(["erroLogin"]),
     emailErrors () {
       const errors = []
       const email = this.$v.user.email
@@ -111,11 +112,15 @@ export default {
   },
    methods: {
      ...mapActions(['logar']),
-		 	submit () {
-         	 this.logar({
+		 async	submit () {
+         await	 this.logar({
 							 email: this.user.email,
 							 senha: this.user.password
-					 }).then(() => this.$router.push({ path: '/home' }))	.catch(err => { console.log(err)})
+           })
+           console.log('dsadasdasudasgdhkask')
+           if(this.erroLogin == null) this.$router.push('/home')
+           else
+           console.log(this.erroLogin)
          }
 		}
 }
