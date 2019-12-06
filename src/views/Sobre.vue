@@ -16,32 +16,51 @@
                   <v-list-item>
                     <!-- <v-list-item-avatar color="blue"></v-list-item-avatar> -->
                     <v-list-item-content>
-                      <v-list-item-title class="headline">{{item.nome}}</v-list-item-title>
-                      <v-list-item-subtitle>{{item.tipo}}</v-list-item-subtitle>
+                      <v-list-item-title class="headline">{{
+                        item.nome
+                      }}</v-list-item-title>
+                      <v-list-item-subtitle>{{
+                        item.tipo
+                      }}</v-list-item-subtitle>
                     </v-list-item-content>
                   </v-list-item>
 
-                  <v-img src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg" height="194"></v-img>
+                  <v-img
+                    src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg"
+                    height="194"
+                  ></v-img>
 
-                  <v-card-text>Nesse projeto ajudei a implementar o visual do das Turmas e da Página Inicial.</v-card-text>
+                  <v-card-text
+                    >Nesse projeto ajudei a implementar o visual do das Turmas e
+                    da Página Inicial.</v-card-text
+                  >
 
                   <v-card-actions>
-                   <v-btn>
-                   <font-awesome-icon :icon="['fab', 'faLinkedin']" />
-                   </v-btn>
+                    <v-btn>
+                      <font-awesome-icon
+                        color="yellow"
+                        :icon="['fab', 'fa-linkedin-in']"
+                      />
+                    </v-btn>
+                    <v-btn color="blue">
+                      <font-awesome-icon
+                        color="white"
+                        :icon="['fab', 'fa-facebook-official']"
+                      />
+                    </v-btn>
 
                     <v-btn>
-                   <font-awesome-icon :icon="['fab', 'facebook-f']" />
+                      <font-awesome-icon
+                        color="green"
+                        :icon="['fab', 'facebook-f']"
+                      />
                     </v-btn>
-             
-                    <v-spacer></v-spacer>
-                    <v-spacer></v-spacer>
-                    <v-btn icon>Facebook</v-btn>
-                    <v-btn icon>
-                      <v-icon>mdi-heart</v-icon>
-                    </v-btn>
-                    <v-btn icon>
-                      <v-icon>mdi-share-variant</v-icon>
+
+                    <v-btn>
+                      <font-awesome-icon
+                        color="red"
+                        :icon="['fab', 'facebook-f']"
+                      />
                     </v-btn>
                   </v-card-actions>
                 </v-card>
@@ -83,7 +102,7 @@ export default {
         }
       ],
       icons: [
-        "fab fa-facebook",
+        "fab fa-facebook-official",
         "fab fa-github",
         "fab fa-twitter",
         "fab fa-linkedin",
