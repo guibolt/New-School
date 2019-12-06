@@ -1,4 +1,4 @@
- <template>
+<template>
   <v-app>
     <AppBar />
     <h1 class="display-3 text-center ">Sistema Escolar</h1>
@@ -28,7 +28,9 @@
               <v-card max-width="344" class="mx-auto" elevation="5" shaped>
                 <v-card-title color="primary">Professor</v-card-title>
 
-                <div class="title text-center pb-3">Quantidade de Professores</div>
+                <div class="title text-center pb-3">
+                  Quantidade de Professores
+                </div>
 
                 <v-card-text class="title text-center">
                   <p>
@@ -49,7 +51,6 @@
 
                 <div class="title text-center pb-3">Quantidade de Alunos</div>
 
-
                 <v-card-text class="title text-center">
                   <p>
                     Registrado(s)
@@ -58,7 +59,6 @@
                       <span class="white--text headline">3</span>
                     </v-avatar>
                   </p>
-
                 </v-card-text>
               </v-card>
             </v-col>
@@ -68,8 +68,9 @@
               <v-card max-width="344" class="mx-auto" elevation="5" shaped>
                 <v-card-title color="teal">Coordenador</v-card-title>
 
-                <div class="title text-center pb-3">Quantidade de Coordenadores</div>
-
+                <div class="title text-center pb-3">
+                  Quantidade de Coordenadores
+                </div>
 
                 <v-card-text class="title text-center">
                   <p>
@@ -98,6 +99,9 @@ export default {
   components: {
     AppBar,
     Footer
+  },
+  computed: {
+    ...mapState(["lstTurmas", "ATurmaSelecionada"])
   }
 };
 </script>
