@@ -45,7 +45,7 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="6" md="6">
+            <v-col cols="12" md="6">
               <v-card max-width="344" class="mx-auto" elevation="5" shaped>
                 <v-card-title color="primary">Aluno</v-card-title>
 
@@ -99,9 +99,6 @@ export default {
   components: {
     AppBar,
     Footer
-  },
-  computed: {
-    ...mapState(["lstTurmas", "ATurmaSelecionada"])
   }
 };
 </script>

@@ -12,12 +12,7 @@
               show-arrows-on-hover
               height="100%"
             >
-              <v-carousel-item
-                v-for="(item, i) in items"
-                :key="i"
-                :src="item.src"
-                reverse-transition="fade-transition"
-              >
+              <v-carousel-item v-for="(item, i) in items" :key="i">
                 <v-card class="mx-auto">
                   <v-list-item>
                     <!-- <v-list-item-avatar color="blue"></v-list-item-avatar> -->
@@ -32,9 +27,15 @@
                   </v-list-item>
 
                   <v-img
+                    height="194"
+                    src="../assets/Rafa.jpg"
+                    alt="img"
+                    width="100%"
+                  ></v-img>
+                  <!-- <v-img
                     src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg"
                     height="194"
-                  ></v-img>
+                  ></v-img> -->
 
                   <v-card-text
                     >Nesse projeto ajudei a implementar o visual do das Turmas e
@@ -42,7 +43,7 @@
                   >
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn icon href="google.com">
+                    <v-btn icon :src="item.link" link>
                       <font-awesome-icon :icon="['fab', 'linkedin']" />
                     </v-btn>
                     <v-spacer></v-spacer>
@@ -75,27 +76,32 @@ export default {
       items: [
         {
           nome: "Rafael",
-          tipo: "Desenvolvedor Full Stack"
+          tipo: "Desenvolvedor Full Stack",
+          src: "/assets/Rafa.jpg",
+          link: "google.com",
+          git: ""
         },
         {
           nome: "Guilherme",
-          tipo: "Desenvolvedor Full Stack"
+          tipo: "Desenvolvedor Full Stack",
+          src: "/assets/Gui.jpg",
+          link: "google.com",
+          git: ""
         },
         {
           nome: "André",
-          tipo: "Desenvolvedor Back-end"
+          tipo: "Desenvolvedor Back-end",
+          src: "/assets/Andre.jpg",
+          link: "google.com",
+          git: ""
         },
         {
           nome: "Matheus",
-          tipo: "Desenvolvedor Black-Tropend"
+          tipo: "Desenvolvedor Black-Tropend",
+          src: "/assets/matheus.jpg",
+          link: "google.com",
+          git: ""
         }
-      ],
-      icons: [
-        "fab fa-facebook-official",
-        "fab fa-github",
-        "fab fa-twitter",
-        "fab fa-linkedin",
-        "fab fa-instagram"
       ]
     };
   }
