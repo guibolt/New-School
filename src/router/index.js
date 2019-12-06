@@ -62,7 +62,10 @@ const routes = [
     meta: { requiresAuth: true },
     component: () => import(/* webpackChunkName: "Sobre"*/ "../views/Sobre.vue")
   },
-  { path: "*", redirect: "/" }
+  { 
+    path: "*", 
+    redirect: "/" 
+  }
 ];
 
 const router = new VueRouter({
@@ -71,25 +74,29 @@ const router = new VueRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {
-  /*Configura as rotas que nao precisam de autorizacao*/
-  const publicPages = ["/", "/cadastro"];
-  //Verifica se a rota que o usuario quer precisa ou não de autorizacao
-  const authRequired = !publicPages.includes(to.path);
+// router.beforeEach((to, from, next) => {
 
-  //Verificar se usuario esta logado no sistema
-  const isLogado = localStorage.getItem("token");
+//   /*Configura as rotas que nao precisam de autorizacao*/
+//   const publicPages = ['/', '/cadastro'];
+//   //Verifica se a rota que o usuario quer precisa ou não de autorizacao
+//   const authRequired = !publicPages.includes(to.path);
 
-  store.state.login.loginSuccessful = isLogado == null ? false : true;
-  if (store.state.login.loginSuccessful)
-    store.commit("login/loginSucesso", isLogado);
+//   //Verificar se usuario esta logado no sistema
+//   const isLogado = localStorage.getItem('token')
 
-  //Verifica se o usuario esta logado ou nao
-  if (!store.state.login.loginSuccessful)
-    if (authRequired && !store.state.login.loginSuccessful)
-      return next({ path: "/" });
+//   store.state.login.loginSuccessful = isLogado == null ? false : true
+//   if (store.state.login.loginSuccessful)
+//     store.commit('login/loginSucesso', isLogado)
 
-  next();
-});
+
+//   //Verifica se o usuario esta logado ou nao
+//   if (!store.state.login.loginSuccessful)
+//     if (authRequired && !store.state.login.loginSuccessful)
+//       return next({ path: '/' });
+
+//   next()
+  
+// })
+
 
 export default router;

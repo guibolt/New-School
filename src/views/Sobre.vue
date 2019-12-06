@@ -25,13 +25,15 @@
 
                   <v-card-text>Nesse projeto ajudei a implementar o visual do das Turmas e da Página Inicial.</v-card-text>
 
-                  <v-btn icon>
-                    <v-icon>fab fa-facebook</v-icon>
-                  </v-btn>
                   <v-card-actions>
-                    <v-btn v-for="(icon, j) in icons" :key="j" icon>
-                      <v-icon>{{icon}}</v-icon>
+                   <v-btn>
+                   <font-awesome-icon :icon="['fab', 'faLinkedin']" />
+                   </v-btn>
+
+                    <v-btn>
+                   <font-awesome-icon :icon="['fab', 'facebook-f']" />
                     </v-btn>
+             
                     <v-spacer></v-spacer>
                     <v-spacer></v-spacer>
                     <v-btn icon>Facebook</v-btn>
