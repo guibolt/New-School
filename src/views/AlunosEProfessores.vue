@@ -268,8 +268,8 @@ export default {
     }
 
   },
-   created(){
-     this.buscarPessoas(this.tipo)
+  async created(){
+    await this.buscarPessoas(this.tipo)
   },
 }
 </script>

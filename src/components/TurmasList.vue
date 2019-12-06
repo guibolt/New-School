@@ -178,8 +178,8 @@ export default {
       return pessoaSelecionada.cpf ? "Professor" : "Aluno";
     }
   },
-  created() {
-    this.buscarTurmas();
+  async created() {
+    await this.buscarTurmas()
     console.log("Turmas?: ", this.lstTurmas[0]);
   }
 };

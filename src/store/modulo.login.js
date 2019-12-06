@@ -22,7 +22,7 @@ export const login = {
     token: localStorage.getItem("token") || "",
     user: {},
     loginSuccessful: false,
-    erroLogin: null
+    erroLogin: null,
   },
   mutations: {
     carregandoAutenticacao(state) {
@@ -53,6 +53,7 @@ export const login = {
 
   actions: {
    async logar({ commit }, user) {
+    commit("carregandoAutenticacao")
      await  apiClient.post('/usuarios/login',user)
       .then(resp =>{
         console.log("Resultado do Login", resp.data.resultado);

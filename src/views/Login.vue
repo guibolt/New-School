@@ -22,6 +22,12 @@
               >
                 <v-toolbar-title>Login</v-toolbar-title>
                 <v-spacer />
+                 <v-progress-circular
+                 v-if="status=== 'loading' "
+                  :size="50"
+                  color="white"
+                  indeterminate
+                ></v-progress-circular>
               </v-toolbar>
               <v-card-text>
                 <v-form>
@@ -91,7 +97,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["erroLogin"]),
+    ...mapState(["erroLogin","status"]),
     emailErrors () {
       const errors = []
       const email = this.$v.user.email
@@ -122,7 +128,10 @@ export default {
            else
            console.log(this.erroLogin)
          }
-		}
+    },
+    created(){
+      console.log("Status", this.status)
+    }
 }
 
 </script>
