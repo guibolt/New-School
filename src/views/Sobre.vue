@@ -5,14 +5,20 @@
       <v-container fluid>
         <v-row justify="center">
           <v-col cols="12" sm="8" lg="4" md="6" xs="2">
-            <v-carousel hide-delimiters="false">
+            <v-carousel
+              hide-delimiters
+              cycle
+              hide-delimiter-background
+              show-arrows-on-hover
+              height="100%"
+            >
               <v-carousel-item
                 v-for="(item, i) in items"
                 :key="i"
                 :src="item.src"
                 reverse-transition="fade-transition"
               >
-                <v-card max-width="344" class="mx-auto">
+                <v-card class="mx-auto">
                   <v-list-item>
                     <!-- <v-list-item-avatar color="blue"></v-list-item-avatar> -->
                     <v-list-item-content>
@@ -34,34 +40,17 @@
                     >Nesse projeto ajudei a implementar o visual do das Turmas e
                     da Página Inicial.</v-card-text
                   >
-
                   <v-card-actions>
-                    <v-btn>
-                      <font-awesome-icon
-                        color="yellow"
-                        :icon="['fab', 'fa-linkedin-in']"
-                      />
+                    <v-spacer></v-spacer>
+                    <v-btn icon href="google.com">
+                      <font-awesome-icon :icon="['fab', 'linkedin']" />
                     </v-btn>
-                    <v-btn color="blue">
-                      <font-awesome-icon
-                        color="white"
-                        :icon="['fab', 'fa-facebook-official']"
-                      />
-                    </v-btn>
+                    <v-spacer></v-spacer>
 
-                    <v-btn>
-                      <font-awesome-icon
-                        color="green"
-                        :icon="['fab', 'facebook-f']"
-                      />
+                    <v-btn icon>
+                      <font-awesome-icon :icon="['fab', 'github']" />
                     </v-btn>
-
-                    <v-btn>
-                      <font-awesome-icon
-                        color="red"
-                        :icon="['fab', 'facebook-f']"
-                      />
-                    </v-btn>
+                    <v-spacer></v-spacer>
                   </v-card-actions>
                 </v-card>
               </v-carousel-item>

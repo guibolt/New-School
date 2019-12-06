@@ -6,16 +6,16 @@ import vuetify from "./plugins/vuetify";
 import Axios from "axios";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import {
-  faFacebookF,
-  faGithub,
-  faLinkedin
-} from "@fortawesome/free-brands-svg-icons";
 
-library.add(faSpinner);
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+
 library.add(faFacebookF);
 library.add(faLinkedin);
+library.add(faTwitter);
 library.add(faGithub);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
