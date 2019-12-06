@@ -21,7 +21,8 @@ export const login = {
     status: "",
     token: localStorage.getItem("token") || "",
     user: {},
-    loginSuccessful: false
+    loginSuccessful: false,
+    erroLogin: null,
   },
   mutations: {
     carregandoAutenticacao(state) {
@@ -46,12 +47,14 @@ export const login = {
       if (resultado != null) {                
           state.loginSucessful = true;
       }
-  }
+     
+  }, loginErro: (state, msg) => state.erroLogin = msg
   },
 
   actions: {
-    logar({ commit }, user) {
-      apiClient.post('/usuarios/login',user)
+   async logar({ commit }, user) {
+    commit("carregandoAutenticacao")
+     await  apiClient.post('/usuarios/login',user)
       .then(resp =>{
         console.log("Resultado do Login", resp.data.resultado);
 
@@ -61,7 +64,9 @@ export const login = {
             localStorage.setItem("token", token);
             commit("sucessoAutenticacao",user, token, );
             console.log("usuario", user);
-      }).catch(err => console.log("Erro no login", err))
+      }).catch(err => {
+        commit("loginErro", "Erro  no login")
+      })
 
     },
     registrar({ commit }, user) {

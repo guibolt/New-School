@@ -22,6 +22,12 @@
               >
                 <v-toolbar-title>Login</v-toolbar-title>
                 <v-spacer />
+                 <v-progress-circular
+                 v-if="status=== 'loading' "
+                  :size="50"
+                  color="white"
+                  indeterminate
+                ></v-progress-circular>
               </v-toolbar>
               <v-card-text>
                 <v-form>
@@ -68,7 +74,7 @@
 import {createNamespacedHelpers} from 'vuex'
 import { required, email, minLength } from 'vuelidate/lib/validators'
 
-const { mapActions } = createNamespacedHelpers('login')
+const { mapActions, mapState } = createNamespacedHelpers('login')
 
 export default {
   name: 'Login',
@@ -91,6 +97,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(["erroLogin","status"]),
     emailErrors () {
       const errors = []
       const email = this.$v.user.email
@@ -111,13 +118,20 @@ export default {
   },
    methods: {
      ...mapActions(['logar']),
-		 	submit () {
-         	 this.logar({
+		 async	submit () {
+         await	 this.logar({
 							 email: this.user.email,
 							 senha: this.user.password
-					 }).then(() => this.$router.push({ path: '/home' }))	.catch(err => { console.log(err)})
+           })
+           console.log('dsadasdasudasgdhkask')
+           if(this.erroLogin == null) this.$router.push('/home')
+           else
+           console.log(this.erroLogin)
          }
-		}
+    },
+    created(){
+      console.log("Status", this.status)
+    }
 }
 
 </script>
