@@ -1,7 +1,7 @@
  <template>
   <v-app>
     <AppBar />
-    <h1 class="text-center">Sistema Escolar</h1>
+    <h1 class="display-3 text-center ">Sistema Escolar</h1>
     <v-container>
       <div>
         <v-container>
@@ -12,8 +12,11 @@
 
                 <div class="title text-center pb-3">Quantidade de Turmas</div>
 
-                <v-card-text>
-                  <p>1</p>
+               
+                <v-card-text class="text-center">
+                  <strong>
+                  <p>[4] registrado(s)</p>
+                  </strong>
                 </v-card-text>
               </v-card>
             </v-col>
@@ -23,9 +26,11 @@
                 <v-card-title color="primary">Professor</v-card-title>
 
                 <div class="title text-center pb-3">Quantidade de Professores</div>
-
-                <v-card-text>
-                  <p>2</p>
+                
+                <v-card-text class="text-center">
+                  <strong>
+                  <p>4 registrado(s)</p>
+                  </strong>
                 </v-card-text>
               </v-card>
             </v-col>
@@ -37,8 +42,11 @@
 
                 <div class="title text-center pb-3">Quantidade de Alunos</div>
 
-                <v-card-text>
-                  <p>3</p>
+              
+                <v-card-text class="text-center">
+                  <strong>
+                  <p>4 registrado(s)</p>
+                  </strong>
                 </v-card-text>
               </v-card>
             </v-col>
@@ -50,8 +58,10 @@
 
                 <div class="title text-center pb-3">Quantidade de Coordenadores</div>
 
-                <v-card-text>
-                  <p>4</p>
+                <v-card-text class="text-center">
+                  <strong>
+                  <p>4 registrado(s)</p>
+                  </strong>
                 </v-card-text>
               </v-card>
             </v-col>
