@@ -11,10 +11,17 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faFacebookF  } from '@fortawesome/free-brands-svg-icons'
 import {faLinkedin} from '@fortawesome/free-brands-svg-icons'
+import {faGithub}  from '@fortawesome/free-brands-svg-icons'
+import {faTwitter} from '@fortawesome/free-brands-svg-icons'
 
 library.add(faSpinner)
 library.add(faFacebookF )
 library.add(faLinkedin)
+library.add(faTwitter)
+
+library.add(faGithub)
+
+
 
 
 

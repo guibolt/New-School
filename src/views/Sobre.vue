@@ -26,23 +26,18 @@
                   <v-card-text>Nesse projeto ajudei a implementar o visual do das Turmas e da Página Inicial.</v-card-text>
 
                   <v-card-actions>
-                   <v-btn>
-                   <font-awesome-icon :icon="['fab', 'faLinkedin']" />
+                          <v-spacer></v-spacer>
+                   <v-btn icon 
+                   href="google.com"
+                   >
+                    <font-awesome-icon :icon="['fab', 'linkedin']"/>
                    </v-btn>
-
-                    <v-btn>
-                   <font-awesome-icon :icon="['fab', 'facebook-f']" />
-                    </v-btn>
-             
                     <v-spacer></v-spacer>
-                    <v-spacer></v-spacer>
-                    <v-btn icon>Facebook</v-btn>
+                    
                     <v-btn icon>
-                      <v-icon>mdi-heart</v-icon>
+                          <font-awesome-icon :icon="['fab', 'github']"/>
                     </v-btn>
-                    <v-btn icon>
-                      <v-icon>mdi-share-variant</v-icon>
-                    </v-btn>
+                         <v-spacer></v-spacer>
                   </v-card-actions>
                 </v-card>
               </v-carousel-item>
