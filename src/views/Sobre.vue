@@ -5,39 +5,52 @@
       <v-container fluid>
         <v-row justify="center">
           <v-col cols="12" sm="8" lg="4" md="6" xs="2">
-            <v-carousel hide-delimiters="false">
+            <v-carousel
+              hide-delimiters
+              cycle
+              hide-delimiter-background
+              show-arrows-on-hover
+              height="100%"
+            >
               <v-carousel-item
                 v-for="(item, i) in items"
                 :key="i"
                 :src="item.src"
                 reverse-transition="fade-transition"
               >
-                <v-card max-width="344" class="mx-auto">
+                <v-card class="mx-auto">
                   <v-list-item>
                     <!-- <v-list-item-avatar color="blue"></v-list-item-avatar> -->
                     <v-list-item-content>
-                      <v-list-item-title class="headline">{{item.nome}}</v-list-item-title>
-                      <v-list-item-subtitle>{{item.tipo}}</v-list-item-subtitle>
+                      <v-list-item-title class="headline">{{
+                        item.nome
+                      }}</v-list-item-title>
+                      <v-list-item-subtitle>{{
+                        item.tipo
+                      }}</v-list-item-subtitle>
                     </v-list-item-content>
                   </v-list-item>
 
-                  <v-img src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg" height="194"></v-img>
+                  <v-img
+                    src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg"
+                    height="194"
+                  ></v-img>
 
-                  <v-card-text>Nesse projeto ajudei a implementar o visual do das Turmas e da Página Inicial.</v-card-text>
-
+                  <v-card-text
+                    >Nesse projeto ajudei a implementar o visual do das Turmas e
+                    da Página Inicial.</v-card-text
+                  >
                   <v-card-actions>
-                          <v-spacer></v-spacer>
-                   <v-btn icon 
-                   href="google.com"
-                   >
-                    <font-awesome-icon :icon="['fab', 'linkedin']"/>
-                   </v-btn>
                     <v-spacer></v-spacer>
-                    
-                    <v-btn icon>
-                          <font-awesome-icon :icon="['fab', 'github']"/>
+                    <v-btn icon href="google.com">
+                      <font-awesome-icon :icon="['fab', 'linkedin']" />
                     </v-btn>
-                         <v-spacer></v-spacer>
+                    <v-spacer></v-spacer>
+
+                    <v-btn icon>
+                      <font-awesome-icon :icon="['fab', 'github']" />
+                    </v-btn>
+                    <v-spacer></v-spacer>
                   </v-card-actions>
                 </v-card>
               </v-carousel-item>
@@ -78,7 +91,7 @@ export default {
         }
       ],
       icons: [
-        "fab fa-facebook",
+        "fab fa-facebook-official",
         "fab fa-github",
         "fab fa-twitter",
         "fab fa-linkedin",
