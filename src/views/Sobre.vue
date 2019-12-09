@@ -15,40 +15,28 @@
               <v-carousel-item v-for="(item, i) in items" :key="i">
                 <v-card class="mx-auto">
                   <v-list-item>
-                    <!-- <v-list-item-avatar color="blue"></v-list-item-avatar> -->
                     <v-list-item-content>
-                      <v-list-item-title class="headline">{{
+                      <v-list-item-title class="headline">
+                        {{
                         item.nome
-                      }}</v-list-item-title>
-                      <v-list-item-subtitle>{{
+                        }}
+                      </v-list-item-title>
+                      <v-list-item-subtitle>
+                        {{
                         item.tipo
-                      }}</v-list-item-subtitle>
+                        }}
+                      </v-list-item-subtitle>
                     </v-list-item-content>
                   </v-list-item>
-
-                  <v-img
-                    height="194"
-                    src="../assets/Rafa.jpg"
-                    alt="img"
-                    width="100%"
-                  ></v-img>
-                  <!-- <v-img
-                    src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg"
-                    height="194"
-                  ></v-img> -->
-
-                  <v-card-text
-                    >Nesse projeto ajudei a implementar o visual do das Turmas e
-                    da Página Inicial.</v-card-text
-                  >
+                  <v-img height="600" :src="item.src" class="circle" width="100%"></v-img>
+                  <v-card-text>{{item.frase}}</v-card-text>
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn icon :src="item.link" link>
+                    <v-btn icon :href="item.link" target="_blank">
                       <font-awesome-icon :icon="['fab', 'linkedin']" />
                     </v-btn>
                     <v-spacer></v-spacer>
-
-                    <v-btn icon>
+                    <v-btn icon :href="item.git" target="_blank">
                       <font-awesome-icon :icon="['fab', 'github']" />
                     </v-btn>
                     <v-spacer></v-spacer>
@@ -75,35 +63,50 @@ export default {
     return {
       items: [
         {
-          nome: "Rafael",
-          tipo: "Desenvolvedor Full Stack",
-          src: "/assets/Rafa.jpg",
-          link: "google.com",
-          git: ""
+          nome: "Rafael Vieira ",
+          tipo: "Desenvolvedor Full-Stack",
+          src: require("../assets/Rafa.jpg"),
+          link: "https://www.linkedin.com/in/rafael-vieira-9a991616b/",
+          git: "https://github.com/DrFaelSan",
+          frase:
+            " Tente mover o mundo – o primeiro passo será mover a si mesmo.  -Platão"
         },
         {
-          nome: "Guilherme",
-          tipo: "Desenvolvedor Full Stack",
-          src: "/assets/Gui.jpg",
-          link: "google.com",
-          git: ""
+          nome: "Guilherme Reis",
+          tipo: "Desenvolvedor Full-Stack",
+          src: require("../assets/Gui.jpg"),
+          link: "https://www.linkedin.com/in/guilherme-dos-reis-3976798a/",
+          git: "https://github.com/guibolt",
+          frase:
+            "Quando vires um homem bom, tenta imitá-lo; quando vires um homem mau, examina-te a ti mesmo. -Confúncio"
         },
         {
-          nome: "André",
-          tipo: "Desenvolvedor Back-end",
-          src: "/assets/Andre.jpg",
-          link: "google.com",
-          git: ""
+          nome: "André Victor",
+          tipo: "Desenvolvedor Back-End",
+          src: require("../assets/andre.jpg"),
+          link:
+            "https://www.linkedin.com/in/andr%C3%A9-victor-de-souza-elias-147b9b170/",
+          git: "https://github.com/AndreNew1",
+          frase:
+            "A alegria que se tem em pensar e aprender faz-nos pensar e aprender ainda mais. -Aristóteles"
         },
         {
-          nome: "Matheus",
-          tipo: "Desenvolvedor Black-Tropend",
-          src: "/assets/matheus.jpg",
-          link: "google.com",
-          git: ""
+          nome: "Matheus Santana",
+          tipo: "Desenvolvedor Mobile",
+          src: require("../assets/matheus.jpg"),
+          link: "https://www.linkedin.com/in/matheus-brito-670643146/",
+          git: "https://github.com/MatheusSantana397",
+          frase:
+            "Duas coisas são infinitas: o universo e a estupidez humana. Mas, em relação ao universo, ainda não tenho certeza absoluta. -Albert Einstein"
         }
       ]
     };
   }
 };
 </script>
+<style scoped>
+.circle {
+  border-radius: 50%;
+  background-color: grey;
+}
+</style>

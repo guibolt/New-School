@@ -60,7 +60,7 @@ const { mapActions, mapState } = createNamespacedHelpers("login");
 
 export default {
   created() {
-      this.userName =  Jwtdecoder(localStorage.getItem("token")).unique_name[1]
+    this.userName = Jwtdecoder(localStorage.getItem("token")).unique_name[1];
   },
   data: () => ({
     userName: undefined,
